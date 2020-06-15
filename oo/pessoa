@@ -1,2 +1,7 @@
 class Pessoa:
-    pass
+    def cumprimentar(self):
+        return f"Olá, sou a pessoa {id(self)} na memória :)"
+
+if __name__ == "__main__":
+    p = Pessoa()
+    print(p.cumprimentar())
