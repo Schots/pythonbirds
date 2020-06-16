@@ -1,7 +1,11 @@
 class Pessoa:
+    def __init__(self,*filhos,nome = None):
+        self.nome = nome
+        self.filhos = list(filhos)
     def cumprimentar(self):
         return f"Olá, sou a pessoa {id(self)} na memória :)"
 
 if __name__ == "__main__":
-    p = Pessoa()
+    p = Pessoa("Nina",nome = "Maykon")
     print(p.cumprimentar())
+    print(p.filhos)
