@@ -26,7 +26,21 @@ class Direcao():
         elif self.direcao == "Sul":
             self.direcao = "Oeste"
             return self.direcao
-        return "Norte"
+        self.direcao = "Norte"
+        return self.direcao
+
+    def girar_a_esquerda(self):
+        if self.direcao == "Norte":
+            self.direcao = "Oeste"
+            return self.direcao
+        elif self.direcao == "Oeste":
+            self.direcao = "Sul"
+            return self.direcao
+        elif self.direcao == "Sul":
+            self.direcao = "Leste"
+            return self.direcao
+        self.direcao = "Norte"
+        return self.direcao
 
 
 if __name__ == "__main__":
@@ -36,7 +50,9 @@ if __name__ == "__main__":
     print(motor.frear())
     direcao = Direcao()
     print(direcao.direcao)
+    # print(direcao.girar_a_direita())
+    # print(direcao.girar_a_direita())
+    # print(direcao.girar_a_direita())
     print(direcao.girar_a_direita())
-    print(direcao.girar_a_direita())
-    print(direcao.girar_a_direita())
-    print(direcao.girar_a_direita())
+    print(direcao.girar_a_esquerda())
+    print(direcao.girar_a_esquerda())
