@@ -1,5 +1,13 @@
+""" Doctests
+    >>> motor = Motor()
+    >>> motor.frear()
+    0
+    >>> motor.acelerar()
+    1
+"""
+
 class Motor():
-    def __init__(self,velocidade_inicial = 0):
+    def __init__(self, velocidade_inicial=0):
         self.velocidade = velocidade_inicial
 
     def acelerar(self):
@@ -9,11 +17,12 @@ class Motor():
     def frear(self):
         self.velocidade -= 2
         if self.velocidade < 0:
-            return 0
+            self.velocidade = 0
         return self.velocidade
 
+
 class Direcao():
-    def __init__(self,direcao_inicial ="Norte"):
+    def __init__(self, direcao_inicial="Norte"):
         self.direcao = direcao_inicial
 
     def girar_a_direita(self):
@@ -50,9 +59,6 @@ if __name__ == "__main__":
     print(motor.frear())
     direcao = Direcao()
     print(direcao.direcao)
-    # print(direcao.girar_a_direita())
-    # print(direcao.girar_a_direita())
-    # print(direcao.girar_a_direita())
     print(direcao.girar_a_direita())
     print(direcao.girar_a_esquerda())
     print(direcao.girar_a_esquerda())
