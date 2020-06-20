@@ -13,11 +13,21 @@
     >>> direcao.girar_a_esquerda()
     >>> direcao.direcao
     'Norte'
+    >>> carro = Carro(motor,direcao)
+    >>> carro.motor.acelerar()
+    >>> carro.motor.velocidade
+    2
+
 """
 NORTE = 'Norte'
 LESTE = 'Leste'
 OESTE = 'Oeste'
 SUL = 'Sul'
+
+class Carro():
+    def __init__(self,motor,direcao):
+        self.motor = motor
+        self.direcao = direcao
 
 class Motor():
     def __init__(self, velocidade_inicial=0):
