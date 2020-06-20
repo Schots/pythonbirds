@@ -1,10 +1,23 @@
 """ Doctests
     >>> motor = Motor()
     >>> motor.frear()
+    >>> motor.velocidade
     0
     >>> motor.acelerar()
+    >>> motor.velocidade
     1
+    >>> direcao = Direcao()
+    >>> direcao.girar_a_direita()
+    >>> direcao.direcao
+    'Leste'
+    >>> direcao.girar_a_esquerda()
+    >>> direcao.direcao
+    'Norte'
 """
+NORTE = 'Norte'
+LESTE = 'Leste'
+OESTE = 'Oeste'
+SUL = 'Sul'
 
 class Motor():
     def __init__(self, velocidade_inicial=0):
@@ -12,53 +25,25 @@ class Motor():
 
     def acelerar(self):
         self.velocidade += 1
-        return self.velocidade
 
     def frear(self):
         self.velocidade -= 2
-        if self.velocidade < 0:
-            self.velocidade = 0
-        return self.velocidade
+        self.velocidade = max(0,self.velocidade)
 
 
 class Direcao():
-    def __init__(self, direcao_inicial="Norte"):
-        self.direcao = direcao_inicial
+    rotaciona_direita_dict = {NORTE:LESTE,LESTE:SUL,SUL:OESTE,OESTE:NORTE}
+    rotaciona_esquerda_dict = {NORTE: OESTE, OESTE: SUL, SUL: LESTE, LESTE: NORTE}
+
+    def __init__(self):
+        self.direcao = NORTE
 
     def girar_a_direita(self):
-        if self.direcao == "Norte":
-            self.direcao = "Leste"
-            return self.direcao
-        elif self.direcao == "Leste":
-            self.direcao = "Sul"
-            return self.direcao
-        elif self.direcao == "Sul":
-            self.direcao = "Oeste"
-            return self.direcao
-        self.direcao = "Norte"
-        return self.direcao
+        self.direcao = self.rotaciona_direita_dict[self.direcao]
 
     def girar_a_esquerda(self):
-        if self.direcao == "Norte":
-            self.direcao = "Oeste"
-            return self.direcao
-        elif self.direcao == "Oeste":
-            self.direcao = "Sul"
-            return self.direcao
-        elif self.direcao == "Sul":
-            self.direcao = "Leste"
-            return self.direcao
-        self.direcao = "Norte"
-        return self.direcao
+        self.direcao = self.rotaciona_esquerda_dict[self.direcao]
 
 
 if __name__ == "__main__":
-    motor = Motor(10)
-    print(motor.velocidade)
-    print(motor.acelerar())
-    print(motor.frear())
-    direcao = Direcao()
-    print(direcao.direcao)
-    print(direcao.girar_a_direita())
-    print(direcao.girar_a_esquerda())
-    print(direcao.girar_a_esquerda())
+    pass
